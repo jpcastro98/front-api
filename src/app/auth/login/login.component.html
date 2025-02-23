@@ -1,0 +1,33 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg w-50 p-4 rounded-4 " style="background: rgba(255, 255, 255, 0.062); backdrop-filter: blur(10px);">
+      <div class="text-center">
+        <img src="assets/img/login.png" alt="Usuario" class="img-fluid mb-3">
+      </div>
+  
+      <h3 class="text-center text-light">Iniciar Sesión</h3>
+  
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="mb-3">
+          <label class="fw-bold text-light">Email</label>
+          <input type="email" class="form-control bg-transparent text-light border-light" formControlName="email" placeholder="Ingresa tu correo" />
+        </div>
+        <div class="mb-3">
+          <label class="fw-bold text-light">Contraseña</label>
+          <input type="password" class="form-control bg-transparent text-light border-light" formControlName="password" placeholder="Ingresa tu contraseña" />
+        </div>
+  
+        <div class="d-grid">
+          <button type="submit" class="btn btn-light btn-lg text-primary fw-bold w-50 mx-auto" [disabled]="loginForm.invalid">
+            <i class="fas fa-sign-in-alt"></i> Ingresar
+          </button>
+        </div>
+      </form>
+  
+      <div *ngIf="errorMessage" class="alert alert-danger text-center mt-3">{{ errorMessage }}</div>
+  
+      <div class="text-center mt-3">
+        <p class="text-light">¿No tienes cuenta? <span (click)="registerUser()" class="text-decoration-none text-light fw-bold">Regístrate aquí</span></p>
+      </div>
+    </div>
+  </div>
+  

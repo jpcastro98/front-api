@@ -1,0 +1,18 @@
+<nav class="navbar navbar-dark  px-5">
+  <div>
+    <img class="logo" src="assets/img/login.png" alt="Usuario">
+    <a class="navbar-brand fw-bold text-light" href="/users">Godoy</a>
+  </div>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ms-auto d-flex flex-row-reverse">
+      <li class="nav-item">
+        <button class="btn btn-danger btn-sm fw-bold" (click)="logout()">
+          <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>

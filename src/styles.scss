@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background: linear-gradient(135deg, #4a90e2 0%, #6a74e8 40%, #9013fe 100%);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+
+
+
+
+
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #6a74e8 #f8f9fa;
+}

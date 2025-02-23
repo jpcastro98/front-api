@@ -1,0 +1,64 @@
+<div class="container p-4 rounded bg-white" style="max-width: 500px;">
+  <h2 mat-dialog-title class="text-primary text-center fw-bold">Editar Usuario</h2>
+  <form [formGroup]="userFormEdit" (ngSubmit)="onSubmit()">
+
+    <!-- Contenedor con scroll -->
+    <mat-dialog-content class="p-3 overflow-auto" style="max-height: 400px;">
+      <div class="mb-3">
+        <label class="form-label fw-bold text-dark">Email</label>
+        <input matInput class="form-control rounded-3 border-secondary shadow-sm p-2" formControlName="Email"
+          placeholder="Usuario" />
+        <div *ngIf="userFormEdit.get('Email')?.getError('err')" class="text-danger mt-1">
+          {{ userFormEdit.get('Email')?.getError('err') }}
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-bold text-dark">Contraseña</label>
+        <input matInput type="password" class="form-control rounded-3 border-secondary shadow-sm p-2"
+          formControlName="Password" placeholder="Contraseña" />
+        <div *ngIf="userFormEdit.get('Password')?.getError('err')" class="text-danger mt-1">
+          {{ userFormEdit.get('Password')?.getError('err') }}
+        </div>
+      </div>
+      <div formGroupName="UserData">
+        <div class="mb-3">
+          <label class="form-label fw-bold text-dark">Número de documento</label>
+          <input matInput class="form-control rounded-3 border-secondary shadow-sm p-2"
+            formControlName="IdentificationNumber" placeholder="Número de identificación" />
+          <div *ngIf="userFormEdit.get('UserData')?.get('IdentificationNumber')?.getError('err')" class="text-danger mt-1">
+            {{ userFormEdit.get('UserData')?.get('IdentificationNumber')?.getError('err') }}
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-bold text-dark">Nombres</label>
+          <input matInput class="form-control rounded-3 border-secondary shadow-sm p-2" formControlName="Names"
+            placeholder="Nombre" />
+          <div *ngIf="userFormEdit.get('UserData')?.get('Names')?.getError('err')" class="text-danger mt-1">
+            {{ userFormEdit.get('UserData')?.get('Names')?.getError('err') }}
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-bold text-dark">Apellidos</label>
+          <input matInput class="form-control rounded-3 border-secondary shadow-sm p-2" formControlName="LastNames"
+            placeholder="Apellidos" />
+          <div *ngIf="userFormEdit.get('UserData')?.get('LastNames')?.getError('err')" class="text-danger mt-1">
+            {{ userFormEdit.get('UserData')?.get('LastNames')?.getError('err') }}
+          </div>
+        </div>
+      </div>
+      <div *ngIf="userFormEdit.getError('err')" class="text-danger mt-1">
+        {{ userFormEdit.getError('err') }}
+      </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions class="d-flex justify-content-end">
+      <button class="btn btn-secondary me-2 rounded-3 shadow-sm fw-bold px-3 py-2" mat-button (click)="onCancel()">
+        <i class="fas fa-times"></i> Cancelar
+      </button>
+      <button class="btn btn-primary rounded-3 shadow-sm fw-bold px-3 py-2" mat-button type="submit"
+        [disabled]="userFormEdit.invalid">
+        <i class="fas fa-save"></i> Actualizar
+      </button>
+    </mat-dialog-actions>
+  </form>
+</div>

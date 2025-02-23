@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+  <div class="d-flex flex-row justify-content-between align-items-center p-3 bg-light rounded shadow-sm">
+    <h2 class="text-primary">Usuarios</h2>
+    <button class="btn btn-success" (click)="registerUser()">
+      <i class="fas fa-user-plus"></i> Agregar Usuario
+    </button>
+  </div>
+
+  <div class="table-responsive mt-3">
+    <table class="table table-hover table-striped table-bordered shadow-sm">
+      <thead>
+        <tr class="text-white bg-info text-center">
+          <th class="p-3">Número de <br> identificación</th>
+          <th class="p-3">Nombre</th>
+          <th class="p-3">Apellidos</th>
+          <th class="p-3">Correo Electrónico</th>
+          <th class="p-3">Score</th>
+          <th class="p-3">Ultimo inicio de sesion</th>
+          <th class="p-3">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users" class="text-center">
+           <td class="align-middle">{{ user.UserData.IdentificationNumber }}</td>
+          <td class="align-middle">{{ user.UserData.Names }}</td>
+          <td class="align-middle">{{ user.UserData.LastNames }}</td>
+          <td class="align-middle">{{ user.Email }}</td>
+          <td class="align-middle">
+            <span class="badge bg-success p-2" *ngIf="user.UserData.Score >= 80">{{ user.UserData.Score }}</span>
+            <span class="badge bg-warning p-2" *ngIf="user.UserData.Score < 80 && user.UserData.Score >= 50">{{ user.UserData.Score }}</span>
+            <span class="badge bg-danger p-2" *ngIf="user.UserData.Score < 50">{{ user.UserData.Score }}</span>
+          </td>
+          <td class="align-middle">
+            <span class="badge bg-success p-2" *ngIf="user.SessionHistory">{{ user.SessionHistory.LastLogin }}</span>
+
+          </td>
+          <td class="align-middle">
+            <button class="btn btn-primary btn-sm mx-2" (click)="editUser(user)">
+              <i class="fas fa-edit"></i> Editar
+            </button>
+            <button class="btn btn-danger btn-sm mx-2" (click)="deleteUser(user.Id)">
+              <i class="fas fa-trash-alt"></i> Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
