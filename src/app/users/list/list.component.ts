@@ -26,7 +26,6 @@ export class ListComponent implements OnInit {
   getUsers() {
     this.userService.getAllUsers().subscribe((data) => {
       this.users = data.$values; 
-      console.log("thisuses", this.users);
     });
   }
 

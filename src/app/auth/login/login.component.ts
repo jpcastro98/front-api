@@ -27,16 +27,12 @@ export class LoginComponent {
 
   login() {
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
       this.authService.login(this.loginForm.value)
         .subscribe({
           next: () => {
-            console.log(("Usuario auntenticado"));
             this.router.navigate(['/users'])
           },
           error: (error) => {
-            console.log(error);
-
             this.errorMessage = 'Credenciales incorrectas';
           },
         }

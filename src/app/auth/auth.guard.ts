@@ -14,18 +14,13 @@ export class AuthGuard implements CanActivate {
   constructor(private http: HttpClient, private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    console.log('Ruta actual desde RouterStateSnapshot:', state.url);
 
     return this.http.get<{ message: string }>(`${this.apiUrl}/auth/validate-token`, { withCredentials: true }).pipe(
       map((response) => {
-        console.log('Token válido:', response.message);
         return true;
       }),
-      catchError((error) => {
-        console.error('Token inválido o expirado:', error);
-        
+      catchError((error) => {        
         this.router.navigate(['/auth/login']);
-        
         return of(false);
       })
     );

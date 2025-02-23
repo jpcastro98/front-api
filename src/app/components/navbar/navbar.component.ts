@@ -21,7 +21,6 @@ export class NavbarComponent {
     this.authService.logout()
         .subscribe({
           next: () => {
-            
             this.router.navigate(['/'])
           },
           error: (error) => {

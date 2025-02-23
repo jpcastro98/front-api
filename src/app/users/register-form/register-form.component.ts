@@ -17,7 +17,7 @@ export class RegisterComponent {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-     private dialog: MatDialog,
+    private dialog: MatDialog,
     public dialogRef: MatDialogRef<RegisterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
@@ -39,12 +39,10 @@ export class RegisterComponent {
       this.userService.registerUser(values).subscribe({
         next: (res) => {
           this.dialogRef.close(true);
-          console.log("this.res2",res);
-          
           const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-                      width: '50%',
-                      data: res, 
-                    });
+            width: '50%',
+            data: res,
+          });
         },
         error: (err) => {
           const errors = err.error;

@@ -43,6 +43,5 @@ export class UserService {
         control.setErrors({ err: error.errors[field][0] });
       }
     });
-    console.log(userForm);
   }
 } 

@@ -36,10 +36,8 @@ export class FormComponent {
 
   onSubmit() {
     if (this.userFormEdit.valid) {     
-      console.log(this.data);
       this.userService.updateUser(this.data.Id, this.userFormEdit.value).subscribe({
         next: (result) => {
-          console.log(result);
           this.dialogEditRef.close(true); 
           const dialogRef = this.dialog.open(ConfirmDialogComponent, {
             width: '50%',
